@@ -1,12 +1,488 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Faisal Khalique - Cyber Security</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Md Faisal Khalique | Cyber Security Portfolio</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --panel: #111a2e;
+      --panel-2: #16213a;
+      --text: #e8eefc;
+      --muted: #b7c3df;
+      --accent: #4f8cff;
+      --accent-2: #7fb3ff;
+      --border: rgba(255,255,255,0.08);
+      --shadow: 0 18px 40px rgba(0,0,0,0.28);
+      --radius: 18px;
+      --max: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(79,140,255,0.18), transparent 25%),
+        linear-gradient(180deg, #0a1120 0%, #0d1528 50%, #0b1220 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(12px);
+      background: rgba(11, 18, 32, 0.75);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      gap: 16px;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+
+    .brand span {
+      color: var(--accent-2);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 84px 0 56px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-card,
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 34px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(79,140,255,0.14);
+      color: var(--accent-2);
+      font-size: 0.86rem;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.12;
+      margin-bottom: 16px;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 62ch;
+      margin-bottom: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .profile-card {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    .avatar {
+      width: 78px;
+      height: 78px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-size: 1.6rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), #305dc7);
+      color: white;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .info-item {
+      padding: 14px;
+      border-radius: 14px;
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+    }
+
+    .info-item small {
+      display: block;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    section {
+      padding: 22px 0 30px;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .section-text {
+      color: var(--muted);
+      margin-bottom: 24px;
+      max-width: 72ch;
+    }
+
+    .grid-2,
+    .grid-3 {
+      display: grid;
+      gap: 20px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card {
+      padding: 24px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.12rem;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    .card ul {
+      margin-left: 18px;
+      margin-top: 10px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .project-tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      font-size: 0.8rem;
+      color: var(--accent-2);
+      background: rgba(79,140,255,0.12);
+      padding: 7px 10px;
+      border-radius: 999px;
+    }
+
+    .contact-box {
+      text-align: center;
+      padding: 34px;
+    }
+
+    footer {
+      padding: 30px 0 50px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to my Cyber Security Portfolio</h1>
-  <p>Name: Md Faisal Khalique</p>
-  <p>Course: Certificate IV in Cyber Security (TAFE SA)</p>
-  <p>Skills: SOC, Incident Response, AWS, Splunk, Fortinet</p>
+  <header>
+    <div class="container nav">
+      <div class="brand">Md Faisal <span>Khalique</span></div>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-card">
+          <div class="eyebrow">Cyber Security Student | Portfolio Website</div>
+          <h1>Building practical skills in cyber security, cloud, and incident response.</h1>
+          <p class="lead">
+            I am Md Faisal Khalique, a Certificate IV in Cyber Security student at TAFE SA with a focus on SOC operations,
+            incident response, AWS cloud tasks, Splunk, and Fortinet-based lab environments.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-secondary" href="#contact">Contact Me</a>
+          </div>
+          <div class="pill-row">
+            <span class="pill">SOC Fundamentals</span>
+            <span class="pill">Incident Response</span>
+            <span class="pill">AWS Cloud</span>
+            <span class="pill">Splunk</span>
+            <span class="pill">Fortinet Labs</span>
+          </div>
+        </div>
+
+        <aside class="hero-card profile-card">
+          <div class="avatar">FK</div>
+          <div>
+            <h2 style="margin-bottom: 6px;">Md Faisal Khalique</h2>
+            <p style="color: var(--muted);">Cyber Security Student</p>
+          </div>
+          <div class="info-list">
+            <div class="info-item">
+              <small>Study</small>
+              Certificate IV in Cyber Security, TAFE SA
+            </div>
+            <div class="info-item">
+              <small>Focus Areas</small>
+              Security Operations, cloud labs, incident handling, and defensive security tools
+            </div>
+            <div class="info-item">
+              <small>Location</small>
+              Adelaide, Australia
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-text">
+          I am developing hands-on skills through practical lab work, security-focused coursework, and cloud deployment activities.
+          My interests include monitoring, incident detection, threat response processes, and building reliable technical documentation.
+        </p>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Professional Goals</h3>
+            <p>
+              My goal is to build a strong foundation in defensive cyber security and continue growing through further study,
+              practical projects, and real-world security operations experience.
+            </p>
+          </div>
+          <div class="card">
+            <h3>What I Value</h3>
+            <p>
+              I value structured analysis, accurate documentation, careful troubleshooting, and clear communication during security incidents.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">Core Skills</h2>
+        <p class="section-text">
+          These are the areas I am currently building through study, labs, and portfolio work.
+        </p>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Security Operations</h3>
+            <ul>
+              <li>Incident identification and classification</li>
+              <li>Basic monitoring and alert review</li>
+              <li>Documentation and reporting</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Cloud & Infrastructure</h3>
+            <ul>
+              <li>AWS S3 static website hosting</li>
+              <li>VPC, EC2, load balancer, and Auto Scaling labs</li>
+              <li>Security group and network basics</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Security Tools</h3>
+            <ul>
+              <li>Splunk fundamentals</li>
+              <li>Fortinet lab exposure</li>
+              <li>Packet Tracer network practice</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-text">
+          Example project areas based on my study and lab activities.
+        </p>
+        <div class="grid-3">
+          <article class="card">
+            <div class="project-tag">AWS</div>
+            <h3>Static Website Hosting</h3>
+            <p>
+              Built and published a simple website using cloud hosting concepts and repository-based deployment.
+            </p>
+          </article>
+          <article class="card">
+            <div class="project-tag">Incident Response</div>
+            <h3>IR Documentation Tasks</h3>
+            <p>
+              Worked on incident reporting, communication planning, response timelines, and cyber incident management content.
+            </p>
+          </article>
+          <article class="card">
+            <div class="project-tag">Networking</div>
+            <h3>Lab Network Configuration</h3>
+            <p>
+              Practised routing, addressing, and basic network security concepts in Packet Tracer and virtual lab environments.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="card contact-box">
+          <h2 class="section-title" style="margin-bottom: 12px;">Contact</h2>
+          <p class="section-text" style="margin: 0 auto 20px;">
+            You can update this section later with your professional email, LinkedIn profile, or GitHub project links.
+          </p>
+          <a class="btn btn-primary" href="mailto:faisal_2599@yahoo.com">Email Me</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Md Faisal Khalique. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
